@@ -1,7 +1,9 @@
+import SandboxApp from "./sandbox/SandboxApp";
+
 const App = () => {
   return (
     <div>
-      <h1>Hello World</h1>
+      <SandboxApp />
     </div>
   );
 };
