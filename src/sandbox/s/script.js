@@ -6,10 +6,13 @@ const CONFIG = {
     "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=800&h=1200&fit=crop",
   ],
   interval: 3000,
-  animation: {
-    translateX: 150,
-    rotation: 10,
-  },
+  snapBackDelay: 400,
+  animations: [
+    { translateX: -200, rotation: 10 },
+    { translateX: 200, rotation: 10 },
+    { translateX: 200, rotation: 15 },
+    { translateX: 200, rotation: -15 },
+  ],
   brightness: {
     active: 1,
     inactive: 0.6,
@@ -30,13 +33,15 @@ const animateCard = (element, { translateX, rotation, zIndex, brightness }) => {
   element.style.filter = `brightness(${brightness})`;
 };
 
-const setActiveCard = (cards, activeIndex) => {
+const setActiveCard = (cards, activeIndex, stackOrder) => {
   cards.forEach((card, index) => {
     const isActive = index === activeIndex;
+    const animation = CONFIG.animations[index];
+    const zIndex = stackOrder.indexOf(index);
     animateCard(card, {
-      translateX: isActive ? CONFIG.animation.translateX : 0,
-      rotation: isActive ? CONFIG.animation.rotation : 0,
-      zIndex: isActive ? cards.length + index : index,
+      translateX: isActive ? animation.translateX : 0,
+      rotation: isActive ? animation.rotation : 0,
+      zIndex: isActive ? cards.length * 2 : zIndex,
       brightness: isActive
         ? CONFIG.brightness.active
         : CONFIG.brightness.inactive,
@@ -51,12 +56,58 @@ const initCarousel = (container, images) => {
     return card;
   });
 
-  let currentIndex = 0;
-  setActiveCard(cards, currentIndex);
+  let currentIndex = cards.length - 1;
+  let direction = -1;
+  let snapTimeout = null;
+  let stackOrder = cards.map((_, index) => index);
+
+  const updateStackOrder = (activeIndex) => {
+    stackOrder = stackOrder.filter((i) => i !== activeIndex);
+    stackOrder.push(activeIndex);
+  };
+
+  const snapBackActiveCard = (activeIndex) => {
+    const activeCard = cards[activeIndex];
+    const zIndex = stackOrder.indexOf(activeIndex);
+    animateCard(activeCard, {
+      translateX: 0,
+      rotation: 0,
+      zIndex: zIndex,
+      brightness: CONFIG.brightness.active,
+    });
+  };
+
+  cards.forEach((card, index) => {
+    animateCard(card, {
+      translateX: 0,
+      rotation: 0,
+      zIndex: index === currentIndex ? cards.length : index,
+      brightness:
+        index === currentIndex
+          ? CONFIG.brightness.active
+          : CONFIG.brightness.inactive,
+    });
+  });
+
+  updateStackOrder(currentIndex);
 
   const cycle = () => {
-    currentIndex = (currentIndex + 1) % cards.length;
-    setActiveCard(cards, currentIndex);
+    if (snapTimeout) clearTimeout(snapTimeout);
+
+    currentIndex += direction;
+
+    if (currentIndex >= cards.length - 1) {
+      direction = -1;
+    } else if (currentIndex <= 0) {
+      direction = 1;
+    }
+
+    updateStackOrder(currentIndex);
+    setActiveCard(cards, currentIndex, stackOrder);
+
+    snapTimeout = setTimeout(() => {
+      snapBackActiveCard(currentIndex);
+    }, CONFIG.snapBackDelay);
   };
 
   return { cards, cycle };
