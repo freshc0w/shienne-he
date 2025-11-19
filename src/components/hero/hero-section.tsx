@@ -23,6 +23,19 @@ const wordVariants = {
 export const HeroSection = () => {
   const [selectedImage, setSelectedImage] = React.useState(DEFAULT_IMAGE);
   const [showCustomCursor, setShowCustomCursor] = React.useState(false);
+  const [scrollScale, setScrollScale] = React.useState(1);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const maxScroll = 800;
+      const scale = Math.min(1.15, 1 + (scrollY / maxScroll) * 0.15);
+      setScrollScale(scale);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <section className="w-[100vw] md:h-[100svh] h-[350px] relative overflow-hidden">
@@ -101,7 +114,14 @@ export const HeroSection = () => {
         onMouseLeave={() => setShowCustomCursor(false)}
       >
         <div className="absolute top-0 left-0 w-full h-full text-white">
-          <div className="absolute bottom-0 left-0 transform-none w-full">
+          {/* SCALE HERE */}
+          <div
+            className="absolute bottom-0 left-0 w-full"
+            style={{
+              transform: `scale(${scrollScale}) translateZ(0px)`,
+              transformOrigin: "center bottom",
+            }}
+          >
             <div className="intro-title font-brandon font-bold w-full flex justify-center">
               <Letter
                 letter="s"

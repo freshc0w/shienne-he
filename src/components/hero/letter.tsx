@@ -27,7 +27,7 @@ export const Letter = ({
       }}
       className={cn(
         "transition-all duration-500 inline-block",
-        hidden ? "text-[10vw]" : "",
+        hidden ? "text-[12.5vw]" : "",
         "hover:[-webkit-text-stroke:8px_white] hover:[text-stroke:8px_white] hover:[-webkit-text-fill-color:transparent] hover:[text-fill-color:transparent]",
       )}
     >
