@@ -29,7 +29,9 @@ export const CustomCursor = ({ isVisible }: { isVisible: boolean }) => {
       transition={{ duration: 0.2 }}
     >
       <div className="relative w-18 h-18">
-        <div className="absolute inset-0 rounded-full border-white bg-green-500 backdrop-blur-sm overflow-hidden flex items-center justify-center">
+        <div
+          className="absolute inset-0 rounded-full border-2 border-white overflow-hidden flex items-center justify-center bg-primary"
+        >
           <motion.svg
             width="64"
             height="64"
@@ -49,7 +51,7 @@ export const CustomCursor = ({ isVisible }: { isVisible: boolean }) => {
           >
             <path
               d="M12 5V19M12 19L19 12M12 19L5 12"
-              stroke="black"
+              stroke="white"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
