@@ -1,9 +1,7 @@
 const App = () => {
-  return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
-  );
+  return <div className="bg-black text-white w-[100vw] h-[100vh]">
+    testing
+  </div>;
 };
 
 export default App;
