@@ -27,4 +27,12 @@ export const IMAGES = {
     src: "/image_7.jpeg",
     alt: "image_7",
   },
+  image_8: {
+    src: "/image_8.jpg",
+    alt: "image_8",
+  },
+  image_9: {
+    src: "/image_9.jpg",
+    alt: "image_9",
+  },
 };

@@ -3,8 +3,10 @@ import { IMAGES } from "../../constants";
 import { HeroOverlay } from "./hero-overlay";
 import { Letter } from "./letter";
 
+const DEFAULT_IMAGE = IMAGES.image_9;
+
 export const HeroSection = () => {
-  const [selectedImage, setSelectedImage] = React.useState(IMAGES.image_1);
+  const [selectedImage, setSelectedImage] = React.useState(DEFAULT_IMAGE);
 
   return (
     <section className="w-[100vw] md:h-[100svh] h-[350px] relative">
@@ -14,53 +16,70 @@ export const HeroSection = () => {
       />
       <a
         href="#intro-text"
-        className="absolute bottom-0 h-[70%] w-full left-0 z-10 border-none"
+        className="absolute bottom-0 h-[70%] w-full left-0 z-10 border-none bg-transparent text-inherit no-underline outline-none"
+        style={{
+          scrollBehavior: "smooth",
+          color: "inherit",
+          textDecoration: "none",
+          background: "transparent",
+          outline: "none",
+        }}
       >
         <div className="absolute top-0 left-0 w-full h-full text-white">
           <div className="absolute bottom-0 left-0 transform-none w-full">
-            <h1 className="intro-title font-brandon font-bold w-full flex justify-center">
+            <div className="intro-title font-brandon font-bold w-full flex justify-center">
               <Letter
                 letter="s"
                 onMouseEnter={() => setSelectedImage(IMAGES.image_1)}
+                onMouseLeave={() => setSelectedImage(DEFAULT_IMAGE)}
               />
               <Letter
                 letter="h"
                 onMouseEnter={() => setSelectedImage(IMAGES.image_2)}
+                onMouseLeave={() => setSelectedImage(DEFAULT_IMAGE)}
               />
               <Letter
                 letter="i"
                 onMouseEnter={() => setSelectedImage(IMAGES.image_3)}
+                onMouseLeave={() => setSelectedImage(DEFAULT_IMAGE)}
               />
               <Letter
                 letter="e"
                 onMouseEnter={() => setSelectedImage(IMAGES.image_4)}
+                onMouseLeave={() => setSelectedImage(DEFAULT_IMAGE)}
               />
               <Letter
                 letter="n"
-                onMouseEnter={() => setSelectedImage(IMAGES.image_5)}
+                onMouseEnter={() => setSelectedImage(IMAGES.image_6)}
+                onMouseLeave={() => setSelectedImage(DEFAULT_IMAGE)}
               />
               <Letter
                 letter="n"
-                onMouseEnter={() => setSelectedImage(IMAGES.image_5)}
+                onMouseEnter={() => setSelectedImage(IMAGES.image_7)}
+                onMouseLeave={() => setSelectedImage(DEFAULT_IMAGE)}
               />
               <Letter
                 letter="e"
-                onMouseEnter={() => setSelectedImage(IMAGES.image_6)}
+                onMouseEnter={() => setSelectedImage(IMAGES.image_8)}
+                onMouseLeave={() => setSelectedImage(DEFAULT_IMAGE)}
               />
               <Letter
                 letter="n"
                 hidden={true}
-                onMouseEnter={() => setSelectedImage(IMAGES.image_2)}
+                onMouseEnter={() => setSelectedImage(IMAGES.image_9)}
+                onMouseLeave={() => setSelectedImage(DEFAULT_IMAGE)}
               />
               <Letter
                 letter="h"
-                onMouseEnter={() => setSelectedImage(IMAGES.image_7)}
+                onMouseEnter={() => setSelectedImage(IMAGES.image_9)}
+                onMouseLeave={() => setSelectedImage(DEFAULT_IMAGE)}
               />
               <Letter
                 letter="e"
-                onMouseEnter={() => setSelectedImage(IMAGES.image_7)}
+                onMouseEnter={() => setSelectedImage(IMAGES.image_9)}
+                onMouseLeave={() => setSelectedImage(DEFAULT_IMAGE)}
               />
-            </h1>
+            </div>
           </div>
         </div>
       </a>
