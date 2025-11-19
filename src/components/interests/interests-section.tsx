@@ -1,3 +1,5 @@
+import { IMAGES } from "../../constants";
+
 export const InterestsSection = () => {
   return (
     <section className="container mx-auto px-4 md:px-6 py-16 md:py-24">
@@ -10,8 +12,8 @@ export const InterestsSection = () => {
         <div className="group cursor-pointer">
           <div className="relative aspect-[16/9] md:aspect-[21/9] rounded-3xl overflow-hidden mb-6 lg:w-[80%]">
             <img
-              src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=1400&h=600&fit=crop&q=80"
-              alt="Family dinner"
+              src={IMAGES.image_8.src}
+              alt={IMAGES.image_8.alt}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-br from-amber-100/20 to-orange-100/20"></div>
@@ -38,7 +40,7 @@ export const InterestsSection = () => {
               Spontaneous escapes
             </h3>
             <p className="text-base md:text-lg text-foreground/60">
-              My hobby is to accidentally find myself in a new country. <br />Lost... And rich.
+              My dream is to accidentally find myself in a new country. <br />Lost... And rich.
             </p>
           </div>
 

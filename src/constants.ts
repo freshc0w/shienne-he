@@ -35,4 +35,8 @@ export const IMAGES = {
     src: "/image_9.jpg",
     alt: "image_9",
   },
+  image_10: {
+    src: "/image_10.png",
+    alt: "image_10",
+  },
 };

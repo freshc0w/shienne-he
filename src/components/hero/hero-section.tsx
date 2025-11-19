@@ -6,14 +6,14 @@ import { Letter } from "./letter";
 import { CustomCursor } from "./custom-cursor";
 import { MorphingText } from "../ui/morphing-text";
 
-const DEFAULT_IMAGE = IMAGES.image_9;
+const DEFAULT_IMAGE = IMAGES.image_7;
 
 const TEXT_ANIMATION_DURATION = 0.5;
-const TEXT_STAGGER_DELAY = 0.24;
-const FIRST_LINE_WORDS = ["Advisor", "by", "day,"];
-const SECOND_LINE_WORDS = ["Sister", "by"];
+const TEXT_STAGGER_DELAY = 0.4;
+const FIRST_LINE_WORDS = ["Associate", "advisor", "by", "day,"];
+const SECOND_LINE_WORDS = ["Big", "sister", "by"];
 const words = ["nature", "night", "calling"];
-const LETTER_DELAY_OFFSET = 0.6;
+const LETTER_DELAY_OFFSET = 1.2;
 
 const wordVariants = {
   hidden: { opacity: 0, y: 20 },
