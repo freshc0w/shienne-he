@@ -1,0 +1,13 @@
+.intro-title {
+  font-size: 25vw;
+  line-height: 0.6;
+  margin: 0;
+}
+
+.intro-title span {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  transform: translateY(0px) rotate(0deg);
+  letter-spacing: -0.85vw;
+}

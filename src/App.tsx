@@ -1,7 +1,11 @@
+import "./App.css";
+import { HeroSection } from "./components/hero/hero-section";
 const App = () => {
-  return <div className="bg-black text-white w-[100vw] h-[100vh]">
-    testing
-  </div>;
+  return (
+    <div>
+      <HeroSection />
+    </div>
+  );
 };
 
 export default App;
