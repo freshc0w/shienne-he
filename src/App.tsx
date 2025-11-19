@@ -2,6 +2,7 @@ import "./App.css";
 import { Header } from "./components/header/Header";
 import { HeroSection } from "./components/hero/hero-section";
 import { AboutSection } from "./components/about/about-section";
+import { InterestsSection } from "./components/interests/interests-section";
 
 const App = () => {
   return (
@@ -9,6 +10,7 @@ const App = () => {
       <Header />
       <HeroSection />
       <AboutSection />
+      <InterestsSection />
     </div>
   );
 };
