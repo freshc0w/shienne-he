@@ -28,28 +28,35 @@ export const CustomCursor = ({ isVisible }: { isVisible: boolean }) => {
       exit={{ opacity: 0, scale: 0 }}
       transition={{ duration: 0.2 }}
     >
-      <div className="relative w-16 h-16 flex items-center justify-center">
-        <div className="absolute inset-0 rounded-full border-2 border-white bg-black/50 backdrop-blur-sm" />
-        <motion.svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="relative z-10"
-          animate={{ y: [0, 4, 0] }}
-          transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <path
-            d="M12 5V19M12 19L19 12M12 19L5 12"
-            stroke="white"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </motion.svg>
+      <div className="relative w-18 h-18">
+        <div className="absolute inset-0 rounded-full border-white bg-green-500 backdrop-blur-sm overflow-hidden flex items-center justify-center">
+          <motion.svg
+            width="64"
+            height="64"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            animate={{
+              y: [-60, 60],
+              opacity: [1, 1, 1, 1],
+            }}
+            transition={{
+              duration: 1,
+              repeat: Infinity,
+              ease: "linear",
+              times: [0, 0.2, 0.8, 1],
+            }}
+          >
+            <path
+              d="M12 5V19M12 19L19 12M12 19L5 12"
+              stroke="black"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </motion.svg>
+        </div>
       </div>
     </motion.div>
   );
 };
-
