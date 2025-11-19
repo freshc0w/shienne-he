@@ -2,11 +2,13 @@ import React from "react";
 import { IMAGES } from "../../constants";
 import { HeroOverlay } from "./hero-overlay";
 import { Letter } from "./letter";
+import { CustomCursor } from "./custom-cursor";
 
 const DEFAULT_IMAGE = IMAGES.image_9;
 
 export const HeroSection = () => {
   const [selectedImage, setSelectedImage] = React.useState(DEFAULT_IMAGE);
+  const [showCustomCursor, setShowCustomCursor] = React.useState(false);
 
   return (
     <section className="w-[100vw] md:h-[100svh] h-[350px] relative">
@@ -14,9 +16,10 @@ export const HeroSection = () => {
         className="absolute top-0 left-0 w-full h-full"
         selectedImage={selectedImage}
       />
+      <CustomCursor isVisible={showCustomCursor} />
       <a
         href="#intro-text"
-        className="absolute bottom-0 h-[70%] w-full left-0 z-10 border-none bg-transparent text-inherit no-underline outline-none"
+        className="absolute bottom-0 h-[70%] w-full left-0 z-10 border-none bg-transparent text-inherit no-underline outline-none cursor-none"
         style={{
           scrollBehavior: "smooth",
           color: "inherit",
@@ -24,6 +27,8 @@ export const HeroSection = () => {
           background: "transparent",
           outline: "none",
         }}
+        onMouseEnter={() => setShowCustomCursor(true)}
+        onMouseLeave={() => setShowCustomCursor(false)}
       >
         <div className="absolute top-0 left-0 w-full h-full text-white">
           <div className="absolute bottom-0 left-0 transform-none w-full">
