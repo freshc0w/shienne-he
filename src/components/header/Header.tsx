@@ -34,9 +34,15 @@ export const Header = () => {
 
   return (
     <>
-      <header className="fixed w-full z-50 top-0 with-intro text-primary-foreground">
+      <header
+        className={`fixed w-full z-50 top-0 with-intro text-primary-foreground transition-opacity duration-300 ${
+          mobileMenuOpen
+            ? "lg:opacity-100 opacity-0 pointer-events-none"
+            : "opacity-100"
+        }`}
+      >
         <div className="flex justify-between items-center w-full font-sans text-2xl px-4 md:px-12 py-4 md:py-6">
-          <div className="flex items-center py-2">
+          <div className="flex items-center">
             <img
               src={IMAGES.image_7.src}
               alt={IMAGES.image_7.alt}
@@ -111,7 +117,7 @@ export const Header = () => {
               asChild
             >
               <a href="#contact">
-                <span>Contact Me</span>
+                <span>contact me</span>
                 <ExternalLinkIcon />
               </a>
             </Button>
@@ -119,20 +125,24 @@ export const Header = () => {
 
           {/* Mobile Menu Button */}
           <div className="lg:hidden flex items-center gap-3">
-            <Button
-              variant="default"
-              className="rounded-full gap-2 text-sm px-6 py-2 border-2 bg-primary text-primary-foreground border-primary"
-              asChild
-            >
-              <a href="#contact">
-                <span>Contact Me</span>
-              </a>
-            </Button>
+            {!mobileMenuOpen && (
+              <Button
+                variant="default"
+                className={`rounded-full gap-2 text-sm px-6 py-2 border-2 bg-primary text-primary-foreground border-primary`}
+                asChild
+              >
+                <a href="#contact">
+                  <span>contact me</span>
+                </a>
+              </Button>
+            )}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className={`p-2 rounded-full border-2 transition-all duration-300 ${
                 isScrolled
                   ? "border-foreground bg-background text-foreground"
+                  : mobileMenuOpen
+                  ? "border-black text-foreground"
                   : "border-primary-foreground bg-transparent text-primary-foreground"
               }`}
               aria-label="Toggle menu"
@@ -165,56 +175,85 @@ export const Header = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-background/95 backdrop-blur-sm z-40 lg:hidden"
+            transition={{ duration: 0.4 }}
+            className="fixed inset-0 bg-gradient-to-br from-background via-background to-primary/5 z-40 lg:hidden"
             onClick={() => setMobileMenuOpen(false)}
           >
-            <div className="flex flex-col items-center justify-center h-full gap-8 px-6">
-              <motion.a
-                href="#intro-text"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-3xl text-foreground hover:opacity-70 transition-opacity"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.1 }}
-              >
-                about me
-              </motion.a>
-              <motion.a
-                href="#timeline"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-3xl text-foreground hover:opacity-70 transition-opacity"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.2 }}
-              >
-                timeline
-              </motion.a>
-              <motion.a
-                href="#testimonials"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-3xl text-foreground hover:opacity-70 transition-opacity"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.3 }}
-              >
-                testimonials
-              </motion.a>
+            <div className="flex flex-col justify-center h-full px-6 py-4">
+              <nav className="flex flex-col gap-1">
+                {[
+                  { num: "01", label: "about me", href: "#intro-text" },
+                  { num: "02", label: "timeline", href: "#timeline" },
+                  { num: "03", label: "testimonials", href: "#testimonials" },
+                ].map((item, index) => (
+                  <motion.a
+                    key={item.href}
+                    href={item.href}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setMobileMenuOpen(false);
+                    }}
+                    className="group relative py-4 border-b border-border/30 px-2"
+                    initial={{ opacity: 0, x: -30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{
+                      duration: 0.5,
+                      delay: 0.1 + index * 0.1,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-baseline gap-4">
+                        <span className="text-sm font-light text-primary">
+                          {item.num}
+                        </span>
+                        <span className="text-3xl font-medium text-foreground group-hover:text-primary transition-colors duration-300">
+                          {item.label}
+                        </span>
+                      </div>
+                      <motion.svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        className="text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        initial={{ x: -10 }}
+                        whileHover={{ x: 0 }}
+                      >
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                      </motion.svg>
+                    </div>
+                  </motion.a>
+                ))}
+              </nav>
+
               <motion.div
+                className="space-y-4 mt-12"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.4 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
               >
+                <div className="h-px bg-border/30 mb-6" />
                 <Button
                   variant="default"
-                  className="rounded-full gap-2 text-lg px-8 py-6 border-2 bg-primary text-primary-foreground border-primary"
+                  className="w-full rounded-full gap-2 text-lg px-8 py-6 border-2 bg-primary text-primary-foreground border-primary hover:bg-primary/90 transition-all duration-300"
                   asChild
                 >
-                  <a href="#contact" onClick={() => setMobileMenuOpen(false)}>
-                    <span>Contact Me</span>
-                    <ExternalLinkIcon />
+                  <a
+                    href="#contact"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setMobileMenuOpen(false);
+                    }}
+                  >
+                    <span>Let's grab a coffee</span>
                   </a>
                 </Button>
+                <p className="text-center text-xs text-muted-foreground">
+                  Not looking for opportunities at the moment
+                </p>
               </motion.div>
             </div>
           </motion.div>
