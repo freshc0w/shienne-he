@@ -8,9 +8,11 @@ const GRID_ROWS = 8;
 export const HeroOverlay = ({
   className,
   selectedImage,
+  isDefaultImage = false,
 }: {
   className?: string;
   selectedImage: { src: string; alt: string };
+  isDefaultImage?: boolean;
 }) => {
   const [key, setKey] = useState(0);
 
@@ -66,6 +68,15 @@ export const HeroOverlay = ({
         ))}
       </div>
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/70 pointer-events-none z-10" />
+      {isDefaultImage && (
+        <div
+          className="absolute inset-0 pointer-events-none z-10"
+          style={{
+            background:
+              "radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.4) 70%, rgba(0,0,0,0.7) 100%)",
+          }}
+        />
+      )}
     </div>
   );
 };
