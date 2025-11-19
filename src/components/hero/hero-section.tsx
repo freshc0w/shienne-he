@@ -4,9 +4,21 @@ import { IMAGES } from "../../constants";
 import { HeroOverlay } from "./hero-overlay";
 import { Letter } from "./letter";
 import { CustomCursor } from "./custom-cursor";
+import { MorphingText } from "../ui/morphing-text";
 
 const DEFAULT_IMAGE = IMAGES.image_9;
-const LETTER_DELAY_OFFSET = 1;
+
+const TEXT_ANIMATION_DURATION = 0.5;
+const TEXT_STAGGER_DELAY = 0.24;
+const FIRST_LINE_WORDS = ["Advisor", "by", "day,"];
+const SECOND_LINE_WORDS = ["Sister", "by"];
+const words = ["nature", "night", "calling"];
+const LETTER_DELAY_OFFSET = 0.6;
+
+const wordVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
 
 export const HeroSection = () => {
   const [selectedImage, setSelectedImage] = React.useState(DEFAULT_IMAGE);
@@ -20,18 +32,61 @@ export const HeroSection = () => {
         isDefaultImage={selectedImage === DEFAULT_IMAGE}
       />
       <CustomCursor isVisible={showCustomCursor} />
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute top-[40%] left-8 md:left-32 z-20 text-white pointer-events-none"
-      >
-        <p className="text-lg md:text-xl font-brandon font-light max-w-[300px]">
-          Just a 20-something girl
-          <br />
-          living in...
-        </p>
-      </motion.div>
+      <div className="absolute top-[40%] left-8 md:left-40 z-20 text-white pointer-events-none">
+        <div className="text-lg md:text-xl font-brandon font-light max-w-[350px]">
+          <p className="mb-0 flex flex-wrap gap-x-[0.3em]">
+            {FIRST_LINE_WORDS.map((word, index) => (
+              <motion.span
+                key={`first-${index}`}
+                variants={wordVariants}
+                initial="hidden"
+                animate="visible"
+                transition={{
+                  duration: TEXT_ANIMATION_DURATION,
+                  delay: index * TEXT_STAGGER_DELAY,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+              >
+                {word}
+              </motion.span>
+            ))}
+          </p>
+          <p className="mb-0 flex gap-2">
+            {SECOND_LINE_WORDS.map((word, index) => (
+              <motion.span
+                key={`second-${index}`}
+                variants={wordVariants}
+                initial="hidden"
+                animate="visible"
+                transition={{
+                  duration: TEXT_ANIMATION_DURATION,
+                  delay: (FIRST_LINE_WORDS.length + index) * TEXT_STAGGER_DELAY,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+              >
+                {word}
+              </motion.span>
+            ))}
+            <motion.span
+              variants={wordVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{
+                duration: TEXT_ANIMATION_DURATION,
+                delay:
+                  (FIRST_LINE_WORDS.length + SECOND_LINE_WORDS.length) *
+                  TEXT_STAGGER_DELAY,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
+              <MorphingText
+                texts={words}
+                className="inline-block text-lg md:text-xl font-brandon font-light min-w-[100px] md:min-w-[120px]"
+              />
+            </motion.span>
+          </p>
+        </div>
+      </div>
       <a
         href="#intro-text"
         className="absolute bottom-0 h-[70%] w-full left-0 z-10 border-none bg-transparent text-inherit no-underline outline-none cursor-none"
