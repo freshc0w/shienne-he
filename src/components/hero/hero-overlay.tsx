@@ -38,7 +38,10 @@ export const HeroOverlay = ({
           key={selectedImage.src}
           src={selectedImage.src}
           alt={selectedImage.alt}
-          className={`w-full h-full object-cover brightness-85 contrast-120 saturate-90 ${isDefaultImage ? "object-top" : "object-center"}`}
+          className={`w-full h-full object-cover brightness-85 contrast-120 saturate-90 ${
+            isDefaultImage ? "" : "object-center"
+          }`}
+          style={isDefaultImage ? { objectPosition: "center 15%" } : undefined}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}

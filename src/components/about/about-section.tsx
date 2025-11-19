@@ -1,5 +1,5 @@
 import { LinkPreview } from "../ui/link-preview";
-import { GetInTouchButton } from "./get-in-touch-button";
+import { LinkButton } from "../link-button";
 import { Pronunciation } from "./pronunciation";
 
 export const AboutSection = () => {
@@ -26,16 +26,12 @@ export const AboutSection = () => {
             >
               Shadforth,
             </LinkPreview>{" "}
-            I combine advisor training with a psychiatry background because I
+            I combine advisor training with a psychology background because I
             believe good advice starts with actually understanding people.
           </p>
           <div className="pt-8 w-full flex">
-            <GetInTouchButton />
+            <LinkButton text="Get in touch" href="#contact"/>
           </div>
-          {/* <p>
-            Happiest at family dinners, booking spontaneous trips, or deep in a
-            good book.
-          </p> */}
         </div>
       </div>
     </section>

@@ -1,9 +1,9 @@
-import "./get-in-touch-button.css";
+import "./link-button.css";
 
-export const GetInTouchButton = () => {
+export const LinkButton = ( { text, href }: { text: string, href: string } ) => {
   return (
-    <a href="#contact" className="button1 text-lg md:text-2xl">
-      Get in touch
+    <a href={href} className="button1 text-lg md:text-2xl">
+      {text}
       <span className="button1__icon-wrapper">
         <svg
           viewBox="0 0 14 15"

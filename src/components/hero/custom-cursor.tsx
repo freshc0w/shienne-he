@@ -28,11 +28,11 @@ export const CustomCursor = ({ isVisible }: { isVisible: boolean }) => {
       exit={{ opacity: 0, scale: 0 }}
       transition={{ duration: 0.2 }}
     >
-      <div className="relative w-18 h-18">
+      <div className="relative w-14 h-14">
         <div className="absolute inset-0 rounded-full border-2 border-white overflow-hidden flex items-center justify-center bg-primary">
           <motion.svg
-            width="64"
-            height="64"
+            width="48"
+            height="48"
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
