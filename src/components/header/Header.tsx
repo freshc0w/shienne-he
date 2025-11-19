@@ -38,7 +38,7 @@ export const Header = () => {
           <img
             src={IMAGES.image_7.src}
             alt={IMAGES.image_7.alt}
-            className="w-20 h-20 rounded-full object-cover"
+            className="w-16 h-16 rounded-full object-cover"
           />
         </div>
         <motion.div
@@ -55,12 +55,21 @@ export const Header = () => {
           <AnimatePresence>
             {showLinks && (
               <motion.div
-                className="flex gap-4 items-center px-4"
+                className="flex gap-4 items-center pr-4"
                 initial={{ opacity: 0, width: 0 }}
                 animate={{ opacity: 1, width: "auto" }}
                 exit={{ opacity: 0, width: 0 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
               >
+                <div className="bg-accent/30 rounded-l-full pl-4 pr-4 py-2 skew-x-[-10deg]">
+                  <span
+                    className={`text-accent-foreground text-3xl skew-x-[10deg] inline-block ${
+                      isScrolled && scrollingUp ? "text-black" : ""
+                    }`}
+                  >
+                    sh.
+                  </span>
+                </div>
                 <a
                   href="#intro-text"
                   className={`hover:opacity-70 transition-opacity whitespace-nowrap ${

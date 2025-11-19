@@ -1,7 +1,7 @@
 .with-intro {
   opacity: 0;
   transform: translateY(-50%);
-  animation: slideIn .8s 3s forwards;
+  animation: slideIn 0.8s 3s forwards;
 }
 
 @keyframes slideIn {
@@ -14,4 +14,3 @@
     opacity: 1;
   }
 }
-
