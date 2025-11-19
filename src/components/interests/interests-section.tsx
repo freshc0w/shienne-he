@@ -1,4 +1,4 @@
-import { IMAGES } from "../../constants";
+import { HERO_FILES } from "../../constants";
 
 export const InterestsSection = () => {
   return (
@@ -12,8 +12,8 @@ export const InterestsSection = () => {
         <div className="group cursor-pointer">
           <div className="relative aspect-[16/9] md:aspect-[21/9] rounded-3xl overflow-hidden mb-6 lg:w-[80%]">
             <img
-              src={IMAGES.image_8.src}
-              alt={IMAGES.image_8.alt}
+              src={HERO_FILES.image_8.src}
+              alt={HERO_FILES.image_8.alt}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-br from-amber-100/20 to-orange-100/20"></div>
@@ -30,7 +30,7 @@ export const InterestsSection = () => {
           <div className="group cursor-pointer md:w-5/12">
             <div className="relative aspect-[4/3] md:aspect-[3/2] rounded-3xl overflow-hidden mb-6">
               <img
-                src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&h=600&fit=crop&q=80"
+                src={HERO_FILES.image_1.src}
                 alt="Travel and adventure"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
@@ -47,7 +47,7 @@ export const InterestsSection = () => {
           <div className="group cursor-pointer md:w-7/12 md:mt-24">
             <div className="relative aspect-[4/3] md:aspect-[4/3] rounded-3xl overflow-hidden mb-6">
               <img
-                src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=800&h=800&fit=crop&q=80"
+                src={HERO_FILES.image_2.src}
                 alt="Books and reading"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />

@@ -1,5 +1,5 @@
 import { Letter } from "./letter";
-import { IMAGES } from "../../constants";
+import { HERO_FILES } from "../../constants";
 
 type ImageType = { src: string; alt: string };
 
@@ -11,16 +11,16 @@ type NameLettersProps = {
 };
 
 const letterConfigs = [
-  { letter: "s", delay: 1.0, image: IMAGES.image_1 },
-  { letter: "h", delay: 1.1, image: IMAGES.image_2 },
-  { letter: "i", delay: 1.2, image: IMAGES.image_3 },
-  { letter: "e", delay: 1.3, image: IMAGES.image_4 },
-  { letter: "n", delay: 1.4, image: IMAGES.image_6 },
-  { letter: "n", delay: 1.5, image: IMAGES.image_7 },
-  { letter: "e", delay: 1.6, image: IMAGES.image_8 },
-  { letter: "n", delay: 1.7, image: IMAGES.image_9, hidden: true },
-  { letter: "h", delay: 1.8, image: IMAGES.image_9 },
-  { letter: "e", delay: 1.9, image: IMAGES.image_9 },
+  { letter: "s", delay: 1.0, image: HERO_FILES.image_1 },
+  { letter: "h", delay: 1.1, image: HERO_FILES.image_2 },
+  { letter: "i", delay: 1.2, image: HERO_FILES.image_3 },
+  { letter: "e", delay: 1.3, image: HERO_FILES.image_4 },
+  { letter: "n", delay: 1.4, image: HERO_FILES.image_6 },
+  { letter: "n", delay: 1.5, image: HERO_FILES.image_7 },
+  { letter: "e", delay: 1.6, image: HERO_FILES.image_8 },
+  { letter: "n", delay: 1.7, image: HERO_FILES.image_9, hidden: true },
+  { letter: "h", delay: 1.8, image: HERO_FILES.image_9 },
+  { letter: "e", delay: 1.9, image: HERO_FILES.image_10 },
 ];
 
 export const NameLetters = ({

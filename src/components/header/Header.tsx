@@ -3,7 +3,7 @@ import { Button } from "../ui/button";
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Header.css";
-import { IMAGES } from "../../constants";
+import { HERO_FILES } from "../../constants";
 
 export const Header = () => {
   const [scrollingUp, setScrollingUp] = useState(false);
@@ -44,8 +44,8 @@ export const Header = () => {
         <div className="flex justify-between items-center w-full font-sans text-2xl px-4 md:px-12 py-4 md:py-6">
           <div className="flex items-center">
             <img
-              src={IMAGES.image_7.src}
-              alt={IMAGES.image_7.alt}
+              src={HERO_FILES.image_7.src}
+              alt={HERO_FILES.image_7.alt}
               className="w-12 h-12 md:w-16 md:h-16 rounded-full object-cover"
             />
           </div>
