@@ -17,6 +17,13 @@ export const HeroSection = () => {
         selectedImage={selectedImage}
       />
       <CustomCursor isVisible={showCustomCursor} />
+      <div className="absolute top-[40%] left-8 md:left-32 z-20 text-white pointer-events-none">
+        <p className="text-lg md:text-xl font-brandon font-light max-w-[300px]">
+          Just a 20-something girl
+          <br />
+          living in...
+        </p>
+      </div>
       <a
         href="#intro-text"
         className="absolute bottom-0 h-[70%] w-full left-0 z-10 border-none bg-transparent text-inherit no-underline outline-none cursor-none"
