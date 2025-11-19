@@ -1,5 +1,20 @@
 import { cn } from "../../lib/utils";
 
-export const HeroOverlay = ({ className }: { className?: string }) => {
-  return <div className={cn("bg-black", className)}></div>;
+export const HeroOverlay = ({
+  className,
+  selectedImage,
+}: {
+  className?: string;
+  selectedImage: { src: string; alt: string };
+}) => {
+  return (
+<div className={cn("bg-black relative", className)}>
+  <img
+    src={selectedImage.src}
+    alt={selectedImage.alt}
+    className="w-full h-full object-cover object-center brightness-90"
+  />
+  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60" />
+</div>
+  );
 };
