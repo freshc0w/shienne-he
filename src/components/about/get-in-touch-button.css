@@ -1,0 +1,73 @@
+.button1 {
+  line-height: 1;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: oklch(0.6 0.08 130);
+  color: oklch(0.97 0.015 120);
+  border-radius: 10rem;
+  font-weight: 500;
+  padding: 0.4rem;
+  padding-left: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+@media (min-width: 768px) {
+  .button1 {
+    gap: 0.75rem;
+    padding: 0.5rem;
+    padding-left: 1.5rem;
+  }
+}
+
+.button1__icon-wrapper {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  position: relative;
+  color: oklch(0.6 0.08 130);
+  background-color: oklch(0.97 0.015 120);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .button1__icon-wrapper {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.button1:hover {
+  background-color: oklch(0.97 0.015 120);
+  color: oklch(0.6 0.08 130);
+  border-color: oklch(0.6 0.08 130);
+}
+
+.button1:hover .button1__icon-wrapper {
+  color: oklch(0.97 0.015 120);
+  background-color: oklch(0.6 0.08 130);
+}
+
+.button1__icon-svg--copy {
+  position: absolute;
+  transform: translate(-150%, 150%);
+}
+
+.button1:hover .button1__icon-svg:first-child {
+  transition: transform 0.3s ease-in-out;
+  transform: translate(150%, -150%);
+}
+
+.button1:hover .button1__icon-svg--copy {
+  transition: transform 0.3s ease-in-out 0.1s;
+  transform: translate(0);
+}

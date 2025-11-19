@@ -29,7 +29,7 @@ export const HeroSection = () => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const maxScroll = 800;
-      const scale = Math.min(1.15, 1 + (scrollY / maxScroll) * 0.15);
+      const scale = Math.min(1.15, 1 + (scrollY / maxScroll) * 0.1);
       setScrollScale(scale);
     };
 
