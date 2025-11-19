@@ -59,6 +59,7 @@ const initCarousel = (container, images) => {
   let currentIndex = cards.length - 1;
   let direction = -1;
   let snapTimeout = null;
+  let autoShuffleInterval = null;
   let stackOrder = cards.map((_, index) => index);
 
   const updateStackOrder = (activeIndex) => {
@@ -77,24 +78,13 @@ const initCarousel = (container, images) => {
     });
   };
 
-  cards.forEach((card, index) => {
-    animateCard(card, {
-      translateX: 0,
-      rotation: 0,
-      zIndex: index === currentIndex ? cards.length : index,
-      brightness:
-        index === currentIndex
-          ? CONFIG.brightness.active
-          : CONFIG.brightness.inactive,
-    });
-  });
+  const activateCard = (index) => {
+    if (index === currentIndex) return;
 
-  updateStackOrder(currentIndex);
-
-  const cycle = () => {
     if (snapTimeout) clearTimeout(snapTimeout);
+    if (autoShuffleInterval) clearInterval(autoShuffleInterval);
 
-    currentIndex += direction;
+    currentIndex = index;
 
     if (currentIndex >= cards.length - 1) {
       direction = -1;
@@ -107,16 +97,56 @@ const initCarousel = (container, images) => {
 
     snapTimeout = setTimeout(() => {
       snapBackActiveCard(currentIndex);
+      autoShuffleInterval = setInterval(cycle, CONFIG.interval);
     }, CONFIG.snapBackDelay);
   };
 
-  return { cards, cycle };
-};
+  cards.forEach((card, index) => {
+    animateCard(card, {
+      translateX: 0,
+      rotation: 0,
+      zIndex: index === currentIndex ? cards.length : index,
+      brightness:
+        index === currentIndex
+          ? CONFIG.brightness.active
+          : CONFIG.brightness.inactive,
+    });
 
-const startAutoShuffle = (carousel, interval) => {
-  return setInterval(carousel.cycle, interval);
+    card.style.cursor = "pointer";
+    card.addEventListener("click", () => activateCard(index));
+  });
+
+  updateStackOrder(currentIndex);
+
+  const cycle = () => {
+    if (snapTimeout) clearTimeout(snapTimeout);
+
+    currentIndex += direction;
+
+    if (currentIndex >= cards.length - 1) {
+      currentIndex = cards.length - 1;
+      direction = -1;
+    } else if (currentIndex <= 0) {
+      currentIndex = 0;
+      direction = 1;
+    }
+
+    updateStackOrder(currentIndex);
+    setActiveCard(cards, currentIndex, stackOrder);
+
+    snapTimeout = setTimeout(() => {
+      snapBackActiveCard(currentIndex);
+    }, CONFIG.snapBackDelay);
+  };
+
+  return {
+    cards,
+    cycle,
+    start: () => (autoShuffleInterval = setInterval(cycle, CONFIG.interval)),
+    stop: () => clearInterval(autoShuffleInterval),
+  };
 };
 
 const container = document.querySelector(".img-carousel");
 const carousel = initCarousel(container, CONFIG.images);
-startAutoShuffle(carousel, CONFIG.interval);
+carousel.start();

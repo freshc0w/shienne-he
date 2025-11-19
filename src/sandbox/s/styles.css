@@ -33,5 +33,5 @@ body {
 }
 
 .img-1:not(:first-child) {
-  margin-left: -200px;
+  margin-left: -175px;
 }

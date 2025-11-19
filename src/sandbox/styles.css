@@ -84,19 +84,18 @@
   position: relative;
   width: 450px;
   height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .carousel-card {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 450px;
-  height: 600px;
+  width: 350px;
+  height: 500px;
   border-radius: 1rem;
   overflow: hidden;
   background: #fff;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-  transition: all 0.5s ease;
 }
 
 .carousel-image-wrapper {
