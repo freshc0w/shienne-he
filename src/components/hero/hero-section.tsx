@@ -11,7 +11,7 @@ export const HeroSection = () => {
   const [showCustomCursor, setShowCustomCursor] = React.useState(false);
 
   return (
-    <section className="w-[100vw] md:h-[100svh] h-[350px] relative">
+    <section className="w-[100vw] md:h-[100svh] h-[350px] relative overflow-hidden">
       <HeroOverlay
         className="absolute top-0 left-0 w-full h-full"
         selectedImage={selectedImage}
