@@ -64,7 +64,7 @@ export function InteractiveGridPatternDemo() {
           }}
         >
           <blockquote>
-            <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-gray-700 leading-relaxed mb-4 md:mb-6">
+            <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-gray-700 mb-4 md:mb-6">
               "We're not meant to understand everything, but we are meant to
               have a deep connection with ourselves and others."
             </p>
