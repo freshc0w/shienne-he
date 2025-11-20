@@ -4,6 +4,7 @@ import { HeroSection } from "./components/hero/hero-section";
 import { AboutSection } from "./components/about/about-section";
 import { InterestsSection } from "./components/interests/interests-section";
 import { TimelineSection } from "./components/timeline/timeline-section";
+import { ContactSection } from "./components/contact/contact-section";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
       <AboutSection />
       <InterestsSection />
       <TimelineSection />
+      <ContactSection />
     </div>
   );
 };
