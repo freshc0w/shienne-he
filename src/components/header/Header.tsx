@@ -3,7 +3,7 @@ import { Button } from "../ui/button";
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Header.css";
-import { FAMILY_FILES, HERO_FILES } from "../../constants";
+import { HERO_FILES } from "../../constants";
 
 export const Header = () => {
   const [scrollingUp, setScrollingUp] = useState(false);

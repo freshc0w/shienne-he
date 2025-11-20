@@ -1,7 +1,9 @@
 import { CustomCursor } from "./custom-cursor";
 import { NameLetters } from "./name-letters";
 
-type MediaType = { src: string; alt: string; type: "image" | "video" };
+type MediaType = {
+  image(image: any): void; src: string; alt: string; type: "image" | "video" 
+};
 
 type ScrollPromptProps = {
   showCustomCursor: boolean;
