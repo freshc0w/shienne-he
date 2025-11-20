@@ -63,3 +63,18 @@ export const FAMILY_FILES = {
     type: "image" as const,
   },
 };
+
+export const TRAVEL_FILES = {
+  image_1: {
+    src: "/travel/image_1.png",
+    alt: "image_1",
+    type: "image" as const,
+  },
+}
+export const FRIENDS_FILES = {
+  image_0: {
+    src: "/friends/image_0.png",
+    alt: "image_0",
+    type: "image" as const,
+  },
+}
