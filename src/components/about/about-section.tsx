@@ -14,7 +14,7 @@ export const AboutSection = () => {
             Hi. I'm Shienne.
             <Pronunciation text="Shinnie" phonetic="shin·knee" />
           </p>
-          <p>I make financial plans feel less like overwhelming.</p>
+          <p>I make financial plans feel less overwhelming.</p>
 
           <p>
             At{" "}
@@ -22,7 +22,7 @@ export const AboutSection = () => {
               url="https://www.sfg.com.au/"
               isStatic={true}
               imageSrc="/shadforth-website.png"
-              className="italic underline"
+              className="underline"
             >
               Shadforth,
             </LinkPreview>{" "}

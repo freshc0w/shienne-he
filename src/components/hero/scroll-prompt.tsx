@@ -1,13 +1,13 @@
 import { CustomCursor } from "./custom-cursor";
 import { NameLetters } from "./name-letters";
 
-type ImageType = { src: string; alt: string };
+type MediaType = { src: string; alt: string; type: "image" | "video" };
 
 type ScrollPromptProps = {
   showCustomCursor: boolean;
   onCursorChange: (show: boolean) => void;
-  onImageChange: (image: ImageType) => void;
-  defaultImage: ImageType;
+  onImageChange: (media: MediaType) => void;
+  defaultImage: MediaType;
   scrollScale: number;
   letterDelayOffset: number;
 };

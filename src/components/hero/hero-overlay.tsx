@@ -1,9 +1,11 @@
 import { cn } from "../../lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 
 const GRID_COLS = 10;
 const GRID_ROWS = 8;
+
+type MediaFile = { src: string; alt: string; type: "image" | "video" };
 
 export const HeroOverlay = ({
   className,
@@ -11,13 +13,20 @@ export const HeroOverlay = ({
   isDefaultImage = false,
 }: {
   className?: string;
-  selectedImage: { src: string; alt: string };
+  selectedImage: MediaFile;
   isDefaultImage?: boolean;
 }) => {
   const [key, setKey] = useState(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     setKey((prev) => prev + 1);
+  }, [selectedImage]);
+
+  useEffect(() => {
+    if (selectedImage.type === "video" && videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    }
   }, [selectedImage]);
 
   const cells = Array.from({ length: GRID_COLS * GRID_ROWS });
@@ -34,19 +43,42 @@ export const HeroOverlay = ({
   return (
     <div className={cn("bg-black relative overflow-hidden", className)}>
       <AnimatePresence mode="wait">
-        <motion.img
-          key={selectedImage.src}
-          src={selectedImage.src}
-          alt={selectedImage.alt}
-          className={`w-full h-full object-cover brightness-85 contrast-120 saturate-90 ${
-            isDefaultImage ? "" : "object-center"
-          }`}
-          style={isDefaultImage ? { objectPosition: "center 15%" } : undefined}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.4, ease: "easeInOut" }}
-        />
+        {selectedImage.type === "video" ? (
+          <motion.video
+            key={selectedImage.src}
+            ref={videoRef}
+            src={selectedImage.src}
+            className={`w-full h-full object-cover brightness-85 contrast-120 saturate-90 ${
+              isDefaultImage ? "" : "object-center"
+            }`}
+            style={
+              isDefaultImage ? { objectPosition: "center 15%" } : undefined
+            }
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            loop
+            muted
+            playsInline
+          />
+        ) : (
+          <motion.img
+            key={selectedImage.src}
+            src={selectedImage.src}
+            alt={selectedImage.alt}
+            className={`w-full h-full object-cover brightness-85 contrast-120 saturate-90 ${
+              isDefaultImage ? "" : "object-center"
+            }`}
+            style={
+              isDefaultImage ? { objectPosition: "center 15%" } : undefined
+            }
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+          />
+        )}
       </AnimatePresence>
       <div
         key={key}

@@ -4,7 +4,7 @@ import { HeroOverlay } from "./hero-overlay";
 import { IntroText } from "./intro-text";
 import { ScrollPrompt } from "./scroll-prompt";
 
-const DEFAULT_IMAGE = HERO_FILES.image_7;
+const DEFAULT_IMAGE = HERO_FILES.image_0;
 const TEXT_ANIMATION_DURATION = 0.5;
 const TEXT_STAGGER_DELAY = 0.4;
 const FIRST_LINE_WORDS = ["Associate", "advisor", "by", "day,"];

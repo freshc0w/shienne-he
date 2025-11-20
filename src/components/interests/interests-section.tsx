@@ -1,4 +1,4 @@
-import { HERO_FILES } from "../../constants";
+import { FAMILY_FILES, HERO_FILES } from "../../constants";
 
 export const InterestsSection = () => {
   return (
@@ -12,8 +12,8 @@ export const InterestsSection = () => {
         <div className="group cursor-pointer">
           <div className="relative aspect-[16/9] md:aspect-[21/9] rounded-3xl overflow-hidden mb-6 lg:w-[80%]">
             <img
-              src={HERO_FILES.image_8.src}
-              alt={HERO_FILES.image_8.alt}
+              src={FAMILY_FILES.image_0.src}
+              alt={FAMILY_FILES.image_0.alt}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-br from-amber-100/20 to-orange-100/20"></div>
